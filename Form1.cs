@@ -8,67 +8,58 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Apostila01
+namespace Banco
 {
     public partial class Form1 : Form
     {
+        private Conta c;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            this.c = new Conta();
+            //ContaPoupanca cPoupanca = new ContaPoupanca();
+
+            
+            /*Cliente cliente = new Cliente("Nauber");
+            c.Titular = cliente;
+            c.Valor = cliente;
+            txtTitular.Text = cPoupanca.Titular.Nome;
+            txtNumero.Text = Convert.ToString(cPoupanca.Numero);
+            txtSaldo.Text = Convert.ToString(cPoupanca.Saldo);*/
+
+            
             Conta c = new Conta();
-            Conta victor = new Conta();
-            Conta guilherme = new Conta();
+            c.Numero = 1;
+            Cliente cliente = new Cliente("Victor");
+            c.Titular = cliente;
+            c.Valor = cliente;
+            txtTitular.Text = c.Titular.Nome;
+            txtNumero.Text = Convert.ToString(c.Numero);
+            txtSaldo.Text = Convert.ToString(c.Saldo);              
+                      
 
-            Cliente cliente = new Cliente("Victor Hugo")
-            {
-                Cpf = "966 151 170 583",
-                Rg = "1060953691",
-                Endereco = "Rua Ricardo Schaurich 1252"
-            };
+        }
 
-            MessageBox.Show(cliente.Endereco);
-            
+        private void BotaoDeposito_Click(object sender, EventArgs e)
+        {
+            string valorDigitado = txtValor.Text;
+            double valorOperacao = Convert.ToDouble(valorDigitado);
+            this.c.Deposita(valorOperacao);
+            txtSaldo.Text = Convert.ToString(this.c.Saldo);
+            MessageBox.Show("Sucesso");
+        }
 
-            //Conta umaConta = new Conta();
-            //umaConta.NumeroDaConta = 1;
-
-            //MessageBox.Show("umaConta.NumeroDaConta: "+umaConta.NumeroDaConta);
-            
-
-            //c.NumeroDaConta = 1;
-            //c.titular = "Nauber Ventura";
-            //c.Saldo = 100.0;
-
-            //victor.NumeroDaConta = 2;
-            //victor.titular = "Victor Silva";
-            //victor.Saldo = 1000.0;
-            //victor.Idade = 18;
-            
-            //guilherme.Saldo = 750.0;
-
-            
-
-            /*bool deuCerto = victor.Transfere(100.0, guilherme);//c.Saca(100.0);
-            if (deuCerto == true)
-            {
-                MessageBox.Show("Saque realizado com sucesso. Saldo de Guilerme é: " + guilherme.Saldo);
-
-            }
-            else
-            {
-                if (victor.MenorDeIdade == true)
-                {
-                    MessageBox.Show("Operação negada. Você é menor de idade.");
-                }
-                else
-                {
-                    MessageBox.Show("Saldo insuficiente.");
-                }
-            }*/
+        private void btnSaque_Click(object sender, EventArgs e)
+        {
+            string valorDigitado = txtValor.Text;
+            double valorOperacao = Convert.ToDouble(valorDigitado); 
+            this.c.Saca(valorOperacao);
+            txtSaldo.Text = Convert.ToString(this.c.Saldo);
+            MessageBox.Show("Sucesso");
         }
     }
 }
