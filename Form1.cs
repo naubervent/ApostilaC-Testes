@@ -20,40 +20,47 @@ namespace Apostila01
         private void button1_Click(object sender, EventArgs e)
         {
             Conta c = new Conta();
-            //Conta victor = new Conta();
+            Conta victor = new Conta();
             Conta guilherme = new Conta();
 
-            Cliente cliente = new Cliente();
-            cliente.nome = "Victor";
+            Cliente cliente = new Cliente("Victor Hugo")
+            {
+                Cpf = "966 151 170 583",
+                Rg = "1060953691",
+                Endereco = "Rua Ricardo Schaurich 1252"
+            };
 
-            Conta umaConta = new Conta();
-            umaConta.NumeroDaConta = 1;
-
-            MessageBox.Show("umaConta.NumeroDaConta: "+umaConta.NumeroDaConta);
+            MessageBox.Show(cliente.Endereco);
             
 
-            /*c.numeroDaConta = 1;
+            //Conta umaConta = new Conta();
+            //umaConta.NumeroDaConta = 1;
+
+            //MessageBox.Show("umaConta.NumeroDaConta: "+umaConta.NumeroDaConta);
+            
+
+            //c.NumeroDaConta = 1;
             //c.titular = "Nauber Ventura";
-            c.saldo = 100.0;
+            //c.Saldo = 100.0;
 
-            victor.numeroDaConta = 2;
+            //victor.NumeroDaConta = 2;
             //victor.titular = "Victor Silva";
-            victor.saldo = 0.0;
-            victor.idade = 18;
-            */
-            //guilherme.saldo = 750.0;
+            //victor.Saldo = 1000.0;
+            //victor.Idade = 18;
+            
+            //guilherme.Saldo = 750.0;
 
-            //victor.Transfere(100.0, guilherme);
+            
 
-            /*bool deuCerto = victor.Saca(201.0);//c.Saca(100.0);
+            /*bool deuCerto = victor.Transfere(100.0, guilherme);//c.Saca(100.0);
             if (deuCerto == true)
             {
-                MessageBox.Show("Saque realizado com sucesso. Saldo é: " + victor.saldo);
+                MessageBox.Show("Saque realizado com sucesso. Saldo de Guilerme é: " + guilherme.Saldo);
 
             }
             else
             {
-                if (victor.menorDeIdade == true)
+                if (victor.MenorDeIdade == true)
                 {
                     MessageBox.Show("Operação negada. Você é menor de idade.");
                 }
